@@ -29,6 +29,18 @@
               <pre>{{selectedSearchItem}}</pre>
             </div>
           </div>
+          <!--<div class="column is-6">-->
+            <!--<pre>{{list}}</pre>-->
+          <!--</div>-->
+          humidity
+          <div class="column is-6">
+            <pre>{{humidity}}</pre>
+          </div>
+          temp
+          <div class="column is-6">
+            <pre>{{temp}}</pre>
+          </div>
+          data
           <div class="column is-6">
             <pre>{{data}}</pre>
           </div>
@@ -60,8 +72,11 @@
         selectedSearchItem: null,
         selectedSearchItem1: null,
         data: null,
+        listitem: [1, 2, 3, 4, 5],
         list: null,
         temp: null,
+        dt: null,
+        humidity: null,
         options: {},
         searchOptions: {
           placeholder: 'type city name',
@@ -98,7 +113,18 @@
         this.selectedSearchItem = item
         return new Promise(resolve => {
           axios.get(url1).then(response => {
-            this.data = response.data
+            // const dts = []
+            // console.log(response.data.list.items)
+            response.data.list.forEach((item) => {
+              if (item.dt) {
+                console.log(item)
+                this.dt = item
+              }
+            })
+            // this.data = response.data
+            this.data = response.data.list[0]
+            this.humidity = response.data.list[0].main.humidity
+            this.temp = response.data.list[0].main.temp
           })
         })
       }
