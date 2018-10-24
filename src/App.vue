@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <header class="page-header">
+    <div class="foto">
+      <header class="page-header">
       <div class="wrap">
-        <h2 class="main-title title is-2">Weather application</h2>
-        <span class="caption">Current weather and forecast for cities in Germany</span>
-      </div>
+          <h2 class="main-title title is-2">Weather application</h2>
+          <span class="caption">Current weather and forecast for cities in Germany</span>
+        </div>
     </header>
-    <div class="container">
+      <div class="container">
       <div class="columns">
         <div class="column is-8 is-offset-2">
           <h5 class="title is-5">Start typing city name</h5>
@@ -30,7 +31,7 @@
             </div>
           </div>
           <!--<div class="column is-6">-->
-            <!--<pre>{{list}}</pre>-->
+          <!--<pre>{{list}}</pre>-->
           <!--</div>-->
           humidity
           <div class="column is-6">
@@ -49,6 +50,7 @@
           <!--</div>-->
         </div>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -138,12 +140,7 @@
 <style>
 
   .page-header {
-    height: 100px;
-    background: #41b882; /* Old browsers */
-    background: -moz-linear-gradient(top, #41b882 0%, #337c8e 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #41b882 0%, #337c8e 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #41b882 0%, #337c8e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#41b882', endColorstr='#337c8e', GradientType=0); /* IE6-9 */
+    height: 300px;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
@@ -212,10 +209,14 @@
   }
 
   #app {
-    padding-bottom: 300px;
+    padding-bottom: 1px;
   }
 
   #app code[class*=language-], pre[class*=language-] {
     font-family: monospace;
+  }
+  .foto {
+    background-image: url('../dist/cc_cloud_16x9 2134.png');
+    background-repeat: no-repeat;
   }
 </style>
