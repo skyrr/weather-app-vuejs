@@ -1,58 +1,60 @@
 <template>
-  <div id="app">
-    <div class="foto">
-      <header class="page-header">
-      <div class="wrap">
-          <h2 class="main-title title is-2">Weather application</h2>
-          <span class="caption">Current weather and forecast for cities in Germany</span>
-        </div>
-    </header>
-      <div class="container">
-      <div class="columns">
-        <div class="column is-8 is-offset-2">
-          <h5 class="title is-5">Start typing city name</h5>
-          <div class="columns">
-            <div class="column is-6">
-              <suggestions
-                ref="completor"
-                v-model="searchQuery"
-                :options="searchOptions"
-                :onItemSelected="onSearchItemSelected"
-                :onInputChange="onInputChange">
-                <div slot="item" slot-scope="props" class="single-item">
-                  <template v-if="">
-                  </template>
-                  <span class="name">{{props.item.name}}</span>
+    <div id="app">
+        <div class="weather">
+            <header class="page-header">
+                <div class="wrap">
+                    <h2 class="main-title title is-2">Weather application</h2>
+                    <span class="caption">Current weather and forecast for cities in Germany</span>
                 </div>
-              </suggestions>
+            </header>
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-3"></div>
+                    <div class="column is-6">
+                        <suggestions
+                                ref="completor"
+                                v-model="searchQuery"
+                                :options="searchOptions"
+                                :onItemSelected="onSearchItemSelected"
+                                :onInputChange="onInputChange">
+                            <div slot="item" slot-scope="props" class="single-item">
+                                <template v-if="">
+                                </template>
+                                <span class="name">{{props.item.name}}</span>
+                            </div>
+                        </suggestions>
+                    </div>
+                    <div class="column is-3"></div>
+                </div>
+
+                <div class="columns">
+                    <div class="column is-8">
+                        <div class="column is-4">
+                            <span class="weather-heading-temp">{{currentTemp}}&deg;</span>
+                            <span class="weather-heading">{{city}}</span><br>
+                            <img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">
+                            <span class="weather-sign">humidity</span><br>
+                            <span class="weather-heading">{{currentHumidity}}</span><br>
+                            <span class="weather-sign">wind speed</span><br>
+                            <span class="weather-heading">{{currentWind}}</span>
+                        </div>
+                        <div class="column is-4">
+                        </div>
+                        <div class="column is-4">
+                        </div>
+                    </div>
+                    <div class="column is-8">
+                        data
+                        <div class="column is-6">
+                            <pre>{{data}}</pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                </div>
             </div>
-            <div class="column is-6">
-              <pre>{{selectedSearchItem}}</pre>
-            </div>
-          </div>
-          <!--<div class="column is-6">-->
-          <!--<pre>{{list}}</pre>-->
-          <!--</div>-->
-          humidity
-          <div class="column is-6">
-            <pre>{{humidity}}</pre>
-          </div>
-          temp
-          <div class="column is-6">
-            <pre>{{temp}}</pre>
-          </div>
-          data
-          <div class="column is-6">
-            <pre>{{data}}</pre>
-          </div>
-          <!--<div class="column is-6">-->
-            <!--<pre>{{selectedSearchItem1.data}}</pre>-->
-          <!--</div>-->
         </div>
-      </div>
     </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -73,12 +75,16 @@
         selectedCountry: null,
         selectedSearchItem: null,
         selectedSearchItem1: null,
+        selectedSearchItem2: null,
         data: null,
         listitem: [1, 2, 3, 4, 5],
         list: null,
-        temp: null,
+        city: null,
+        currentTemp: null,
         dt: null,
-        humidity: null,
+        currentHumidity: null,
+        currentWind: null,
+        weatherSign: null,
         options: {},
         searchOptions: {
           placeholder: 'type city name',
@@ -113,6 +119,24 @@
             .then(response => (this.selectedSearchItem1 = response))
         this.selectedSearchItem1 = url1
         this.selectedSearchItem = item
+        this.searchQuery = item.name
+        this.city = item.name
+        const url2 = `http://skyrr.space/api/weather/weather?city=${item.id}`
+        axios
+          .get(url2)
+          .then(response => {
+            this.currentTemp = response.data.main.temp
+            this.currentHumidity = response.data.main.humidity
+            this.currentWind = response.data.wind.speed
+            if (response.data.weather.main === 'Rain') {
+              this.weatherSign = 'rain'
+            } else {
+              this.weatherSign = 'suncloud'
+            }
+            // (this.selectedSearchItem2 = response)
+          })
+          // this.currentTemp = this.selectedSearchItem2.data.main.temp
+        // this.currentHumidity = this.selectedSearchItem2.data.main.humidity
         return new Promise(resolve => {
           axios.get(url1).then(response => {
             // const dts = []
@@ -140,7 +164,7 @@
 <style>
 
   .page-header {
-    height: 300px;
+    height: 150px;
     margin-bottom: 2rem;
     display: flex;
     align-items: center;
@@ -215,8 +239,20 @@
   #app code[class*=language-], pre[class*=language-] {
     font-family: monospace;
   }
-  .foto {
+  .weather {
     background-image: url('../dist/cc_cloud_16x9 2134.png');
     background-repeat: no-repeat;
+  }
+  .weather-heading{
+      color: white;
+      font-size: 36px;
+  }
+  .weather-heading-temp{
+      color: white;
+      font-size: 56px;
+  }
+  .weather-sign{
+      color: white;
+      font-size: 18px;
   }
 </style>
