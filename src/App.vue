@@ -1,56 +1,116 @@
 <template>
     <div id="app">
         <div class="weather">
-            <header class="page-header">
-                <div class="wrap">
-                    <h2 class="main-title title is-2">Weather application</h2>
-                    <span class="caption">Current weather and forecast for cities in Germany</span>
-                </div>
-            </header>
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-3"></div>
-                    <div class="column is-6">
-                        <suggestions
-                                ref="completor"
-                                v-model="searchQuery"
-                                :options="searchOptions"
-                                :onItemSelected="onSearchItemSelected"
-                                :onInputChange="onInputChange">
-                            <div slot="item" slot-scope="props" class="single-item">
-                                <template v-if="">
-                                </template>
-                                <span class="name">{{props.item.name}}</span>
-                            </div>
-                        </suggestions>
+            <div style="position: relative; width: 100%">
+                <img src="../dist/cc_cloud_16x9 21341.png" style="opacity: 1; width: 100%; height: 100%" alt="">
+                <div class="container" style="position: absolute; top: 1px; padding: -0.25rem">
+                    <!--style="align-items: center; text-align: center;"-->
+                    <div class="columns">
+                        <div class="column is-one-third"></div>
+                        <div class="column is-6" style="padding: -0.25rem">
+                            <header class="page-header">
+                                <div class="wrap">
+                                    <h2 class="main-title title is-2">Weather</h2>
+                                    <span class="caption" style="">Current weather and forecast for cities of Germany</span>
+                                </div>
+                            </header>
+                        </div>
+                        <div class="column is-one-third"></div>
                     </div>
-                    <div class="column is-3"></div>
-                </div>
-
-                <div class="columns">
-                    <div class="column is-8">
-                        <div class="column is-4">
-                            <span class="weather-heading-temp">{{currentTemp}}&deg;</span>
-                            <span class="weather-heading">{{city}}</span><br>
-                            <img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">
-                            <span class="weather-sign">humidity</span><br>
-                            <span class="weather-heading">{{currentHumidity}}</span><br>
-                            <span class="weather-sign">wind speed</span><br>
-                            <span class="weather-heading">{{currentWind}}</span>
-                        </div>
-                        <div class="column is-4">
-                        </div>
-                        <div class="column is-4">
-                        </div>
-                    </div>
-                    <div class="column is-8">
-                        data
+                    <div class="columns">
+                        <div class="column is-one-third"></div>
                         <div class="column is-6">
-                            <pre>{{data}}</pre>
+                            <suggestions
+                                    ref="completor"
+                                    v-model="searchQuery"
+                                    :options="searchOptions"
+                                    :onItemSelected="onSearchItemSelected"
+                                    :onInputChange="onInputChange">
+                                <div slot="item" slot-scope="props" class="single-item">
+                                    <template v-if="">
+                                    </template>
+                                    <span class="name">{{props.item.name}}</span>
+                                </div>
+                            </suggestions>
                         </div>
+                        <div class="column is-one-third"></div>
                     </div>
                 </div>
-                <div class="columns">
+                <div class="container">
+                    <div class="columns">
+                        <div class="column is-2">
+                            <div class="column is-2" style="position: absolute; bottom: 35px">
+                                <span class="weather-heading-temp">{{currentTemp}}&deg;</span><br>
+                                <span class="weather-heading">{{city}}</span><br><br><br>
+                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">humidity</span><br>
+                                <span class="weather-heading">{{currentHumidity}}</span><br>
+                                <span class="weather-sign">wind speed</span><br>
+                                <span class="weather-heading">{{currentWind}}</span>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="column is-2" style="position: absolute; bottom: 35px">
+                                <span class="weather-sign">{{day1}}</span><br><br>
+                                <span class="weather-heading">{{day1Temp}}</span><br>
+                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">humidity</span><br>
+                                <span class="weather-heading">{{day1Humidity}}</span><br>
+                                <span class="weather-sign">wind speed</span><br>
+                                <span class="weather-heading">{{day1Wind}}</span>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="column is-2" style="position: absolute; bottom: 35px">
+                                <span class="weather-sign">{{day2}}</span><br><br>
+                                <span class="weather-heading">{{day2Temp}}</span>
+                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">humidity</span><br>
+                                <span class="weather-heading">{{day2Humidity}}</span><br>
+                                <span class="weather-sign">wind speed</span><br>
+                                <span class="weather-heading">{{day2Wind}}</span>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="column is-2" style="position: absolute; bottom: 35px">
+                                <span class="weather-sign">{{day3}}</span><br><br>
+                                <span class="weather-heading">{{day3Temp}}</span>
+                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">humidity</span><br>
+                                <span class="weather-heading">{{day3Humidity}}</span><br>
+                                <span class="weather-sign">wind speed</span><br>
+                                <span class="weather-heading">{{day3Wind}}</span>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="column is-2" style="position: absolute; bottom: 35px">
+                                <span class="weather-sign">{{day4}}</span><br><br>
+                                <span class="weather-heading">{{day4Temp}}</span>
+                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">humidity</span><br>
+                                <span class="weather-heading">{{day4Humidity}}</span><br>
+                                <span class="weather-sign">wind speed</span><br>
+                                <span class="weather-heading">{{day4Wind}}</span>
+                            </div>
+                        </div>
+                        <div class="column is-2">
+                            <div class="column is-2" style="position: absolute; bottom: 35px">
+                                <span class="weather-sign">{{day5}}</span><br><br>
+                                <span class="weather-heading">{{day5Temp}}</span>
+                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">humidity</span><br>
+                                <span class="weather-heading">{{day5Humidity}}</span><br>
+                                <span class="weather-sign">wind speed</span><br>
+                                <span class="weather-heading">{{day5Wind}}</span>
+                            </div>
+                        </div>
+                        <!--<div class="column is-8">-->
+                        <!--data-->
+                        <!--<div class="column is-6">-->
+                        <!--<pre>{{data}}</pre>-->
+                        <!--</div>-->
+                        <!--</div>-->
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,6 +146,26 @@
         currentWind: null,
         weatherSign: null,
         options: {},
+        day1: null,
+        day2: null,
+        day3: null,
+        day4: null,
+        day5: null,
+        day1Temp: null,
+        day2Temp: null,
+        day3Temp: null,
+        day4Temp: null,
+        day5Temp: null,
+        day1Humidity: null,
+        day2Humidity: null,
+        day3Humidity: null,
+        day4Humidity: null,
+        day5Humidity: null,
+        day1Wind: null,
+        day2Wind: null,
+        day3Wind: null,
+        day4Wind: null,
+        day5Wind: null,
         searchOptions: {
           placeholder: 'type city name',
           debounce: 400
@@ -93,6 +173,39 @@
       }
     },
     mounted () {
+      const urlLeipzig = `http://skyrr.space/api/weather/weather?city=6548737`
+      axios
+        .get(urlLeipzig)
+        .then(response => {
+          this.city = response.data.name
+          this.currentTemp = response.data.main.temp
+          this.currentHumidity = response.data.main.humidity
+          this.currentWind = response.data.wind.speed
+          // if (response.data.weather.main === 'Rain') {
+          //   this.weatherSign = 'rain'
+          // } else {
+          //   this.weatherSign = 'suncloud'
+          // }
+          // (this.selectedSearchItem2 = response)
+        })
+      const urlLeipzigForecast = 'http://skyrr.space/api/weather/forecast?city=6548737'
+      return new Promise(resolve => {
+        axios.get(urlLeipzigForecast).then(response => {
+          // const dts = []
+          // console.log(response.data.list.items)
+          response.data.list.forEach((item) => {
+            if (item.dt) {
+              console.log(item)
+              this.dt = item
+            }
+          })
+          // this.data = response.data
+          this.day1 = response.data.list[0].dt_txt
+          this.day1Temp = response.data.list[0].main.temp
+          this.day1Humidity = response.data.list[0].main.humidity
+          this.day1Wind = response.data.list[0].wind.speed
+        })
+      })
     },
     methods: {
       onInputChange (query) {
@@ -148,9 +261,10 @@
               }
             })
             // this.data = response.data
-            this.data = response.data.list[0]
-            this.humidity = response.data.list[0].main.humidity
-            this.temp = response.data.list[0].main.temp
+            this.day1 = response.data.list[0].dt_text
+            this.day1Temp = response.data.list[0].main.humidity
+            this.day1Humidity = response.data.list[0].main.temp
+            this.day1Wind = response.data.list[0].main.temp
           })
         })
       }
@@ -165,7 +279,7 @@
 
   .page-header {
     height: 150px;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     text-align: center;
@@ -239,10 +353,10 @@
   #app code[class*=language-], pre[class*=language-] {
     font-family: monospace;
   }
-  .weather {
-    background-image: url('../dist/cc_cloud_16x9 2134.png');
-    background-repeat: no-repeat;
-  }
+  /*.weather {*/
+    /*background-image: url('../dist/cc_cloud_16x9 2134.png');*/
+    /*background-repeat: no-repeat;*/
+  /*}*/
   .weather-heading{
       color: white;
       font-size: 36px;
