@@ -63,7 +63,7 @@
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
                                 <span class="weather-sign">{{day2}}</span><br><br>
-                                <span class="weather-heading">{{day2Temp}}</span>
+                                <span class="weather-heading">{{day2Temp}}</span><br>
                                 <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day2Humidity}}</span><br>
@@ -74,7 +74,7 @@
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
                                 <span class="weather-sign">{{day3}}</span><br><br>
-                                <span class="weather-heading">{{day3Temp}}</span>
+                                <span class="weather-heading">{{day3Temp}}</span><br>
                                 <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day3Humidity}}</span><br>
@@ -85,7 +85,7 @@
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
                                 <span class="weather-sign">{{day4}}</span><br><br>
-                                <span class="weather-heading">{{day4Temp}}</span>
+                                <span class="weather-heading">{{day4Temp}}</span><br>
                                 <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day4Humidity}}</span><br>
@@ -96,7 +96,7 @@
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
                                 <span class="weather-sign">{{day5}}</span><br><br>
-                                <span class="weather-heading">{{day5Temp}}</span>
+                                <span class="weather-heading">{{day5Temp}}</span><br>
                                 <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day5Humidity}}</span><br>
@@ -191,19 +191,32 @@
       const urlLeipzigForecast = 'http://skyrr.space/api/weather/forecast?city=6548737'
       return new Promise(resolve => {
         axios.get(urlLeipzigForecast).then(response => {
-          // const dts = []
-          // console.log(response.data.list.items)
           response.data.list.forEach((item) => {
             if (item.dt) {
               console.log(item)
               this.dt = item
             }
           })
-          // this.data = response.data
           this.day1 = response.data.list[0].dt_txt
           this.day1Temp = response.data.list[0].main.temp
           this.day1Humidity = response.data.list[0].main.humidity
           this.day1Wind = response.data.list[0].wind.speed
+          this.day2 = response.data.list[2].dt_txt
+          this.day2Temp = response.data.list[2].main.temp
+          this.day2Humidity = response.data.list[2].main.humidity
+          this.day2Wind = response.data.list[2].wind.speed
+          this.day3 = response.data.list[3].dt_txt
+          this.day3Temp = response.data.list[3].main.temp
+          this.day3Humidity = response.data.list[3].main.humidity
+          this.day3Wind = response.data.list[3].wind.speed
+          this.day4 = response.data.list[4].dt_txt
+          this.day4Temp = response.data.list[4].main.temp
+          this.day4Humidity = response.data.list[4].main.humidity
+          this.day4Wind = response.data.list[4].wind.speed
+          this.day5 = response.data.list[5].dt_txt
+          this.day5Temp = response.data.list[5].main.temp
+          this.day5Humidity = response.data.list[5].main.humidity
+          this.day5Wind = response.data.list[5].wind.speed
         })
       })
     },
@@ -246,25 +259,35 @@
             } else {
               this.weatherSign = 'suncloud'
             }
-            // (this.selectedSearchItem2 = response)
           })
-          // this.currentTemp = this.selectedSearchItem2.data.main.temp
-        // this.currentHumidity = this.selectedSearchItem2.data.main.humidity
         return new Promise(resolve => {
           axios.get(url1).then(response => {
-            // const dts = []
-            // console.log(response.data.list.items)
             response.data.list.forEach((item) => {
               if (item.dt) {
                 console.log(item)
                 this.dt = item
               }
             })
-            // this.data = response.data
-            this.day1 = response.data.list[0].dt_text
-            this.day1Temp = response.data.list[0].main.humidity
-            this.day1Humidity = response.data.list[0].main.temp
-            this.day1Wind = response.data.list[0].main.temp
+              this.day1 = response.data.list[0].dt_txt
+              this.day1Temp = response.data.list[0].main.temp
+              this.day1Humidity = response.data.list[0].main.humidity
+              this.day1Wind = response.data.list[0].wind.speed
+              this.day2 = response.data.list[2].dt_txt
+              this.day2Temp = response.data.list[2].main.temp
+              this.day2Humidity = response.data.list[2].main.humidity
+              this.day2Wind = response.data.list[2].wind.speed
+              this.day3 = response.data.list[3].dt_txt
+              this.day3Temp = response.data.list[3].main.temp
+              this.day3Humidity = response.data.list[3].main.humidity
+              this.day3Wind = response.data.list[3].wind.speed
+              this.day4 = response.data.list[4].dt_txt
+              this.day4Temp = response.data.list[4].main.temp
+              this.day4Humidity = response.data.list[4].main.humidity
+              this.day4Wind = response.data.list[4].wind.speed
+              this.day5 = response.data.list[5].dt_txt
+              this.day5Temp = response.data.list[5].main.temp
+              this.day5Humidity = response.data.list[5].main.humidity
+              this.day5Wind = response.data.list[5].wind.speed
           })
         })
       }
