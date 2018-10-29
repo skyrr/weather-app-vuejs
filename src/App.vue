@@ -2,7 +2,7 @@
     <div id="app">
         <div class="weather">
             <div style="position: relative; width: 100%">
-                <img src="../dist/cc_cloud_16x9 21341.png" style="opacity: 1; width: 100%; height: 100%" alt="">
+                <img src="../dist/cc_cloud_16x9 21342.png" style="opacity: 1; width: 100%; height: 100%" alt="">
                 <div class="container" style="position: absolute; top: 1px; padding: -0.25rem">
                     <!--style="align-items: center; text-align: center;"-->
                     <div class="columns">
