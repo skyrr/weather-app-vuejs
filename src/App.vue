@@ -41,7 +41,7 @@
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
                                 <span class="weather-heading-temp">{{currentTemp}}&deg;</span><br>
-                                <span class="weather-heading">{{city}}</span><br><br><br>
+                                <span class="weather-heading">{{city}}</span><br><br><br><br><br><br><br>
                                 <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{currentHumidity}}</span><br>
@@ -268,26 +268,26 @@
                 this.dt = item
               }
             })
-              this.day1 = response.data.list[0].dt_txt
-              this.day1Temp = response.data.list[0].main.temp
-              this.day1Humidity = response.data.list[0].main.humidity
-              this.day1Wind = response.data.list[0].wind.speed
-              this.day2 = response.data.list[2].dt_txt
-              this.day2Temp = response.data.list[2].main.temp
-              this.day2Humidity = response.data.list[2].main.humidity
-              this.day2Wind = response.data.list[2].wind.speed
-              this.day3 = response.data.list[3].dt_txt
-              this.day3Temp = response.data.list[3].main.temp
-              this.day3Humidity = response.data.list[3].main.humidity
-              this.day3Wind = response.data.list[3].wind.speed
-              this.day4 = response.data.list[4].dt_txt
-              this.day4Temp = response.data.list[4].main.temp
-              this.day4Humidity = response.data.list[4].main.humidity
-              this.day4Wind = response.data.list[4].wind.speed
-              this.day5 = response.data.list[5].dt_txt
-              this.day5Temp = response.data.list[5].main.temp
-              this.day5Humidity = response.data.list[5].main.humidity
-              this.day5Wind = response.data.list[5].wind.speed
+            this.day1 = response.data.list[0].dt_txt
+            this.day1Temp = response.data.list[0].main.temp
+            this.day1Humidity = response.data.list[0].main.humidity
+            this.day1Wind = response.data.list[0].wind.speed
+            this.day2 = response.data.list[2].dt_txt
+            this.day2Temp = response.data.list[2].main.temp
+            this.day2Humidity = response.data.list[2].main.humidity
+            this.day2Wind = response.data.list[2].wind.speed
+            this.day3 = response.data.list[3].dt_txt
+            this.day3Temp = response.data.list[3].main.temp
+            this.day3Humidity = response.data.list[3].main.humidity
+            this.day3Wind = response.data.list[3].wind.speed
+            this.day4 = response.data.list[4].dt_txt
+            this.day4Temp = response.data.list[4].main.temp
+            this.day4Humidity = response.data.list[4].main.humidity
+            this.day4Wind = response.data.list[4].wind.speed
+            this.day5 = response.data.list[5].dt_txt
+            this.day5Temp = response.data.list[5].main.temp
+            this.day5Humidity = response.data.list[5].main.humidity
+            this.day5Wind = response.data.list[5].wind.speed
           })
         })
       }
