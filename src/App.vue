@@ -41,8 +41,9 @@
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
                                 <span class="weather-heading-temp">{{currentTemp}}&deg;</span><br>
-                                <span class="weather-heading">{{city}}</span><br><br><br><br><br><br><br>
-                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-heading">{{city}}</span><br><br>
+                                <div id="weatherCur1" class="sunCloudMain"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
+                                <!--<img class="image1" src="" style="opacity: 0;width: 50%" alt=""><br>-->
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{currentHumidity}}</span><br>
                                 <span class="weather-sign">wind speed</span><br>
@@ -51,9 +52,9 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day1}}</span><br><br>
-                                <span class="weather-heading">{{day1Temp}}</span><br>
-                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">{{day1}}</span><br>
+                                <span class="weather-heading">{{day1Temp}}&deg;</span><br>
+                                <div id="weatherD1" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day1Humidity}}</span><br>
                                 <span class="weather-sign">wind speed</span><br>
@@ -62,9 +63,9 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day2}}</span><br><br>
-                                <span class="weather-heading">{{day2Temp}}</span><br>
-                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">{{day2}}</span><br>
+                                <span class="weather-heading">{{day2Temp}}&deg;</span><br>
+                                <div id="weatherD2" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day2Humidity}}</span><br>
                                 <span class="weather-sign">wind speed</span><br>
@@ -73,9 +74,9 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day3}}</span><br><br>
-                                <span class="weather-heading">{{day3Temp}}</span><br>
-                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">{{day3}}</span><br>
+                                <span class="weather-heading">{{day3Temp}}&deg;</span><br>
+                                <div id="weatherD3" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day3Humidity}}</span><br>
                                 <span class="weather-sign">wind speed</span><br>
@@ -84,9 +85,9 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day4}}</span><br><br>
-                                <span class="weather-heading">{{day4Temp}}</span><br>
-                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">{{day4}}</span><br>
+                                <span class="weather-heading">{{day4Temp}}&deg;</span><br>
+                                <div id="weatherD4" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day4Humidity}}</span><br>
                                 <span class="weather-sign">wind speed</span><br>
@@ -95,9 +96,9 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day5}}</span><br><br>
-                                <span class="weather-heading">{{day5Temp}}</span><br>
-                                <!--<img src="../dist/{{weatherSign}}.png" style="width: 70%" alt="">-->
+                                <span class="weather-sign">{{day5}}</span><br>
+                                <span class="weather-heading">{{day5Temp}}&deg;</span><br>
+                                <div id="weatherD5" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
                                 <span class="weather-heading">{{day5Humidity}}</span><br>
                                 <span class="weather-sign">wind speed</span><br>
@@ -174,6 +175,40 @@
     },
     mounted () {
       const urlLeipzig = `http://skyrr.space/api/weather/weather?city=6548737`
+      function showIcon (cond, weatherCur) {
+        switch (cond) {
+          case 'clear sky':
+            document.getElementById(weatherCur).className = 'sunMain'
+              break
+          case 'few clouds':
+            document.getElementById(weatherCur).className = 'sunCloudMain'
+              break
+          case 'scattered clouds':
+            document.getElementById(weatherCur).className = 'cloudMain'
+              break
+          case 'broken clouds':
+            document.getElementById(weatherCur).className = 'cloudMain'
+              break
+          case 'mist':
+            document.getElementById(weatherCur).className = 'cloudMain'
+              break
+          case 'shower rain':
+            document.getElementById(weatherCur).className = 'rainMain'
+              break
+          case 'rain':
+            document.getElementById(weatherCur).className = 'rainMain'
+              break
+          case 'thunderstorm':
+            document.getElementById(weatherCur).className = 'rainMain'
+              break
+          case 'snow':
+            document.getElementById(weatherCur).className = 'snowMain'
+              break
+          default:
+            document.getElementById(weatherCur).className = 'cloudMain'
+              break
+        }
+      }
       axios
         .get(urlLeipzig)
         .then(response => {
@@ -181,42 +216,73 @@
           this.currentTemp = response.data.main.temp
           this.currentHumidity = response.data.main.humidity
           this.currentWind = response.data.wind.speed
-          // if (response.data.weather.main === 'Rain') {
-          //   this.weatherSign = 'rain'
-          // } else {
-          //   this.weatherSign = 'suncloud'
-          // }
-          // (this.selectedSearchItem2 = response)
+          showIcon(response.data.weather.main, 'weatherCur1')
         })
       const urlLeipzigForecast = 'http://skyrr.space/api/weather/forecast?city=6548737'
       return new Promise(resolve => {
+        let hour = 12
+        let today = new Date()
+        let tomorow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+        this.day1 = tomorow.getDate() + '/' + tomorow.getMonth()
+        let tomorow1 = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000)
+        this.day2 = tomorow1.getDate() + '/' + tomorow1.getMonth()
+        let tomorow2 = new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000)
+        this.day3 = tomorow2.getDate() + '/' + tomorow2.getMonth()
+        let tomorow3 = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000)
+        this.day4 = tomorow3.getDate() + '/' + tomorow3.getMonth()
+        let tomorow4 = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000)
+        this.day5 = tomorow4.getDate() + '/' + tomorow4.getMonth()
+        // let image1 = document.getElementsByClassName("image1");
         axios.get(urlLeipzigForecast).then(response => {
           response.data.list.forEach((item) => {
-            if (item.dt) {
-              console.log(item)
-              this.dt = item
-            }
           })
-          this.day1 = response.data.list[0].dt_txt
-          this.day1Temp = response.data.list[0].main.temp
-          this.day1Humidity = response.data.list[0].main.humidity
-          this.day1Wind = response.data.list[0].wind.speed
-          this.day2 = response.data.list[2].dt_txt
-          this.day2Temp = response.data.list[2].main.temp
-          this.day2Humidity = response.data.list[2].main.humidity
-          this.day2Wind = response.data.list[2].wind.speed
-          this.day3 = response.data.list[3].dt_txt
-          this.day3Temp = response.data.list[3].main.temp
-          this.day3Humidity = response.data.list[3].main.humidity
-          this.day3Wind = response.data.list[3].wind.speed
-          this.day4 = response.data.list[4].dt_txt
-          this.day4Temp = response.data.list[4].main.temp
-          this.day4Humidity = response.data.list[4].main.humidity
-          this.day4Wind = response.data.list[4].wind.speed
-          this.day5 = response.data.list[5].dt_txt
-          this.day5Temp = response.data.list[5].main.temp
-          this.day5Humidity = response.data.list[5].main.humidity
-          this.day5Wind = response.data.list[5].wind.speed
+          for (let i = 0; i < 40; i++) {
+            if (response.data.list[i].dt_txt.slice(8, 10) == tomorow.getDate()) {
+              if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                this.day1 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                this.day1Temp = response.data.list[i].main.temp
+                this.day1Humidity = response.data.list[i].main.humidity
+                this.day1Wind = response.data.list[i].wind.speed
+                showIcon(response.data.list[i].weather[0].description, 'weatherD1')
+              }
+            }
+            if (response.data.list[i].dt_txt.slice(8, 10) == tomorow1.getDate()) {
+              if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                this.day2 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                this.day2Temp = response.data.list[i].main.temp
+                this.day2Humidity = response.data.list[i].main.humidity
+                this.day2Wind = response.data.list[i].wind.speed
+                showIcon(response.data.list[i].weather[0].description, 'weatherD2')
+              }
+            }
+            if (response.data.list[i].dt_txt.slice(8, 10) == tomorow2.getDate()) {
+              if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                this.day3 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                this.day3Temp = response.data.list[i].main.temp
+                this.day3Humidity = response.data.list[i].main.humidity
+                this.day3Wind = response.data.list[i].wind.speed
+                showIcon(response.data.list[i].weather[0].description, 'weatherD3')
+              }
+            }
+            if (response.data.list[i].dt_txt.slice(8, 10) == tomorow3.getDate()) {
+              if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                this.day4 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                this.day4Temp = response.data.list[i].main.temp
+                this.day4Humidity = response.data.list[i].main.humidity
+                this.day4Wind = response.data.list[i].wind.speed
+                showIcon(response.data.list[i].weather[0].description, 'weatherD4')
+              }
+            }
+            if (response.data.list[i].dt_txt.slice(8, 10) == tomorow4.getDate()) {
+              if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                this.day5 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                this.day5Temp = response.data.list[i].main.temp
+                this.day5Humidity = response.data.list[i].main.humidity
+                this.day5Wind = response.data.list[i].wind.speed
+                showIcon(response.data.list[i].weather[0].description, 'weatherD5')
+              }
+            }
+          }
         })
       })
     },
@@ -240,13 +306,60 @@
       },
       onSearchItemSelected (item) {
         const url1 = `http://skyrr.space/api/weather/forecast?city=${item.id}`
-        axios
+          function showIcon (cond, weatherCur) {
+              switch (cond) {
+                  case 'clear sky':
+                      document.getElementById(weatherCur).className = 'sunMain'
+                      break
+                  case 'few clouds':
+                      document.getElementById(weatherCur).className = 'sunCloudMain'
+                      break
+                  case 'scattered clouds':
+                      document.getElementById(weatherCur).className = 'cloudMain'
+                      break
+                  case 'broken clouds':
+                      document.getElementById(weatherCur).className = 'cloudMain'
+                      break
+                  case 'mist':
+                      document.getElementById(weatherCur).className = 'cloudMain'
+                      break
+                  case 'shower rain':
+                      document.getElementById(weatherCur).className = 'rainMain'
+                      break
+                  case 'rain':
+                      document.getElementById(weatherCur).className = 'rainMain'
+                      break
+                  case 'thunderstorm':
+                      document.getElementById(weatherCur).className = 'rainMain'
+                      break
+                  case 'snow':
+                      document.getElementById(weatherCur).className = 'snowMain'
+                      break
+                  default:
+                      document.getElementById(weatherCur).className = 'cloudMain'
+                      break
+              }
+          }
+
+          axios
             .get(url1)
             .then(response => (this.selectedSearchItem1 = response))
         this.selectedSearchItem1 = url1
         this.selectedSearchItem = item
         this.searchQuery = item.name
         this.city = item.name
+        let hour = 12
+        let today = new Date()
+        let tomorow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000)
+        this.day1 = tomorow.getDate() + '/' + tomorow.getMonth()
+        let tomorow1 = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000)
+        this.day2 = tomorow1.getDate() + '/' + tomorow1.getMonth()
+        let tomorow2 = new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000)
+        this.day3 = tomorow2.getDate() + '/' + tomorow2.getMonth()
+        let tomorow3 = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000)
+        this.day4 = tomorow3.getDate() + '/' + tomorow3.getMonth()
+        let tomorow4 = new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000)
+        this.day5 = tomorow4.getDate() + '/' + tomorow4.getMonth()
         const url2 = `http://skyrr.space/api/weather/weather?city=${item.id}`
         axios
           .get(url2)
@@ -254,40 +367,58 @@
             this.currentTemp = response.data.main.temp
             this.currentHumidity = response.data.main.humidity
             this.currentWind = response.data.wind.speed
-            if (response.data.weather.main === 'Rain') {
-              this.weatherSign = 'rain'
-            } else {
-              this.weatherSign = 'suncloud'
-            }
           })
         return new Promise(resolve => {
           axios.get(url1).then(response => {
             response.data.list.forEach((item) => {
-              if (item.dt) {
-                console.log(item)
-                this.dt = item
-              }
             })
-            this.day1 = response.data.list[0].dt_txt
-            this.day1Temp = response.data.list[0].main.temp
-            this.day1Humidity = response.data.list[0].main.humidity
-            this.day1Wind = response.data.list[0].wind.speed
-            this.day2 = response.data.list[2].dt_txt
-            this.day2Temp = response.data.list[2].main.temp
-            this.day2Humidity = response.data.list[2].main.humidity
-            this.day2Wind = response.data.list[2].wind.speed
-            this.day3 = response.data.list[3].dt_txt
-            this.day3Temp = response.data.list[3].main.temp
-            this.day3Humidity = response.data.list[3].main.humidity
-            this.day3Wind = response.data.list[3].wind.speed
-            this.day4 = response.data.list[4].dt_txt
-            this.day4Temp = response.data.list[4].main.temp
-            this.day4Humidity = response.data.list[4].main.humidity
-            this.day4Wind = response.data.list[4].wind.speed
-            this.day5 = response.data.list[5].dt_txt
-            this.day5Temp = response.data.list[5].main.temp
-            this.day5Humidity = response.data.list[5].main.humidity
-            this.day5Wind = response.data.list[5].wind.speed
+            for (let i = 0; i < 40; i++) {
+              if (response.data.list[i].dt_txt.slice(8, 10) == tomorow.getDate()) {
+                if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                  this.day1 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                  this.day1Temp = response.data.list[i].main.temp
+                  this.day1Humidity = response.data.list[i].main.humidity
+                  this.day1Wind = response.data.list[i].wind.speed
+                  showIcon(response.data.list[i].weather[0].description, 'weatherD1')
+                }
+              }
+              if (response.data.list[i].dt_txt.slice(8, 10) == tomorow1.getDate()) {
+                if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                  this.day2 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                  this.day2Temp = response.data.list[i].main.temp
+                  this.day2Humidity = response.data.list[i].main.humidity
+                  this.day2Wind = response.data.list[i].wind.speed
+                  showIcon(response.data.list[i].weather[0].description, 'weatherD2')
+                }
+              }
+              if (response.data.list[i].dt_txt.slice(8, 10) == tomorow2.getDate()) {
+                if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                  this.day3 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                  this.day3Temp = response.data.list[i].main.temp
+                  this.day3Humidity = response.data.list[i].main.humidity
+                  this.day3Wind = response.data.list[i].wind.speed
+                  showIcon(response.data.list[i].weather[0].description, 'weatherD3')
+                }
+              }
+              if (response.data.list[i].dt_txt.slice(8, 10) == tomorow3.getDate()) {
+                if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                  this.day4 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                  this.day4Temp = response.data.list[i].main.temp
+                  this.day4Humidity = response.data.list[i].main.humidity
+                  this.day4Wind = response.data.list[i].wind.speed
+                  showIcon(response.data.list[i].weather[0].description, 'weatherD4')
+                }
+              }
+              if (response.data.list[i].dt_txt.slice(8, 10) == tomorow4.getDate()) {
+                if (response.data.list[i].dt_txt.slice(11, 13) == hour) {
+                  this.day5 = response.data.list[i].dt_txt.slice(5, 10).replace('-', '/')
+                  this.day5Temp = response.data.list[i].main.temp
+                  this.day5Humidity = response.data.list[i].main.humidity
+                  this.day5Wind = response.data.list[i].wind.speed
+                  showIcon(response.data.list[i].weather[0].description, 'weatherD5')
+                }
+              }
+            }
           })
         })
       }
@@ -382,7 +513,7 @@
   /*}*/
   .weather-heading{
       color: white;
-      font-size: 36px;
+      font-size: 30px;
   }
   .weather-heading-temp{
       color: white;
@@ -390,6 +521,44 @@
   }
   .weather-sign{
       color: white;
-      font-size: 18px;
+      font-size: 16px;
+  }
+  .paramsCur {
+      height: 100px;
+      background-size: 100px;
+  }
+  .paramsForecast {
+      height: 80px;
+      background-size: 80px;
+  }
+  .sunCloudMain {
+      background-image: url("../dist/suncloud.png");
+      background-repeat: no-repeat;
+      height: 100px;
+      background-size: 100px;
+  }
+  .rainMain {
+      background-image: url("../dist/rain.png");
+      background-repeat: no-repeat;
+      height: 100px;
+      background-size: 100px;
+  }
+  .snowMain {
+      background-image: url("../dist/snow.png");
+      background-repeat: no-repeat;
+      height: 100px;
+      background-size: 100px;
+  }
+  .sunMain {
+      background-image: url("../dist/sun.png");
+      background-repeat: no-repeat;
+      height: 100px;
+      background-size: 100px;
+  }
+  .cloudMain {
+      background-image: url("../dist/cloud.png");
+      background-repeat: no-repeat;
+      height: 100px;
+      background-size: 100px;
   }
 </style>
