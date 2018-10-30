@@ -52,7 +52,7 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day1}}</span><br>
+                                <span class="weather-sign text-coloured">{{day1}}</span><br>
                                 <span class="weather-heading">{{day1Temp}}&deg;</span><br>
                                 <div id="weatherD1" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day2}}</span><br>
+                                <span class="weather-sign text-coloured">{{day2}}</span><br>
                                 <span class="weather-heading">{{day2Temp}}&deg;</span><br>
                                 <div id="weatherD2" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
@@ -74,7 +74,7 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day3}}</span><br>
+                                <span class="weather-sign text-coloured">{{day3}}</span><br>
                                 <span class="weather-heading">{{day3Temp}}&deg;</span><br>
                                 <div id="weatherD3" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day4}}</span><br>
+                                <span class="weather-sign text-coloured">{{day4}}</span><br>
                                 <span class="weather-heading">{{day4Temp}}&deg;</span><br>
                                 <div id="weatherD4" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="column is-2">
                             <div class="column is-2" style="position: absolute; bottom: 35px">
-                                <span class="weather-sign">{{day5}}</span><br>
+                                <span class="weather-sign text-coloured">{{day5}}</span><br>
                                 <span class="weather-heading">{{day5Temp}}&deg;</span><br>
                                 <div id="weatherD5" class="sunCloudMain" style="height: 80px;background-size: 80px;"><img src="../dist/suncloud.png" style="opacity: 0;width: 50%" alt=""></div>
                                 <span class="weather-sign">humidity</span><br>
@@ -561,4 +561,12 @@
       height: 100px;
       background-size: 100px;
   }
+  .text-coloured {
+      color: #ff9600;
+      text-decoration: underline;
+      font-weight: bold;
+  }
+    .centered{
+        text-align: center;
+    }
 </style>
